@@ -1,0 +1,60 @@
+{
+  "name": "<%= projectName %>",
+  "version": "<%= version %>",
+  "description": "<%= description %>",
+  "main": "index.js",
+  "scripts": {
+    "start": "better-npm-run start",
+    "dev": "better-npm-run dev",
+    "deploy": "rm -fr dist1 ; webpack --config webpack.prod.config.js --progress",
+    "build": "webpack -p --config webpack.dev.config.js",
+    "clean": "rm -fr dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "betterScripts": {
+    "dev": {
+      "command": "webpack-dev-server --config build/webpack.dev.config.js",
+      "env": {
+        "NODE_ENV": "development",
+        "DEBUG": ""
+      }
+    },
+    "deploy": {
+      "command": "webpack -p",
+      "env": {
+        "NODE_ENV": "production",
+        "DEBUG": ""
+      }
+    },
+    "start": {
+      "command": "webpack-dev-server --config webpack.dev.config.js",
+      "env": {
+        "DEBUG": ""
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:umeng-webapp-dev/user-center.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
+  },
+  "devDependencies": {
+    "better-npm-run": "0.0.7",
+    "css-loader": "^0.23.1",
+    "html-webpack-plugin": "^2.15.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "html-loader": "^0.4.3",
+    "react-transform-hmr": "^1.0.2",
+    "style-loader": "^0.13.0",
+    "webpack": "1.12.9",
+    "webpack-dev-middleware": "^1.4.0",
+    "webpack-dev-server": "^1.12.1",
+    "webpack-hot-middleware": "^2.6.0"
+  }
+}
