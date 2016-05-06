@@ -10,8 +10,10 @@ npm install -g yo
 
 ### 2. 安装生成器
 ```
-npm install --save-dev generator-umengplus
+npm install -g generator-umengplus
 ```
+
+>使用-g进行全局安装，在以后每次新建项目时不需再次安装，可直接创建项目
 
 ### 3. 创建项目
 ```
@@ -52,7 +54,7 @@ npm install
 进入到组件目录
 ```
 cd static/components
-``
+```
 执行
 ```
 yo umengplus:react-component
