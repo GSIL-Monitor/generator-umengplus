@@ -42,5 +42,5 @@ yo umengplus
 ```
 
 ### 5. 创建react组件
-1. 进入到组件目录：static/components
+1. 进入到组件目录：`cd static/components`
 2. 执行`yo umengplus:react-component`
