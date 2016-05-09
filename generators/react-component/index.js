@@ -3,6 +3,7 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var inquirer = require('inquirer');
+var utils = require("../utils");
 
 module.exports = yeoman.Base.extend({
   prompting: function () {
@@ -22,8 +23,20 @@ module.exports = yeoman.Base.extend({
       },
       {
         type: 'list',
+        name: 'componentPath',
+        message: 'Choose the path to create the component:',
+        choices: [
+          { name: 'current directory: "."', value: '.' },
+          { name: 'component directory: "static/js/components/"', value: 'static/js/components/' },
+          { name: 'container directory: "static/js/container/"', value: 'static/js/container/' }
+        ],
+        store: true,
+        default: ''
+      },
+      {
+        type: 'list',
         name: 'stylesheetExtension',
-        message: 'Which CSS pre-processor do you need?',
+        message: 'Choose the css pre-processor you need:',
         choices: [
           { name: 'css', value: 'css' },
           { name: 'less', value: 'less' },
@@ -44,8 +57,11 @@ module.exports = yeoman.Base.extend({
     var componentName = this.props.componentName;
     var jsName = componentName + '.' + 'js';
     var stylesheetName = componentName + '.' + this.props.stylesheetExtension;
-    var jsFullPath = this.destinationPath(componentName + '/' + jsName);
-    var stylesheetFullPath = this.destinationPath(componentName + '/' + stylesheetName);
+    var jsFullPath = this.destinationPath(this.props.componentPath + "/" + componentName + '/' + jsName);
+    var stylesheetFullPath = this.destinationPath(this.props.componentPath + "/" + componentName + '/' + stylesheetName);
+
+    utils.debug(this, jsFullPath);
+    utils.debug(this, stylesheetFullPath);
 
     this.fs.copyTpl(
       this.templatePath('componentFile'),

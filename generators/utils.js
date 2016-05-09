@@ -8,7 +8,8 @@ module.exports = {
 }
 
 function debug(generator, msg) {
-  if (false && generator && msg && msg.length > 0) {
+  return;
+  if (generator && msg && msg.length > 0) {
     generator.log(" >debug: " + msg);
   }
 }
